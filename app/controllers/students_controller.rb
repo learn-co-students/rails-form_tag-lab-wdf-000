@@ -6,6 +6,20 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
+    #redirect_to student_path(@student)
+  end
+
+  def new
+    @student = Student.new
+  end
+
+  def create
+    @student = Student.create(
+      first_name: params[:first_name],
+      last_name: params[:last_name] 
+    )
+    # binding.pry
+    redirect_to student_path(@student) # "students/#{@student.id}"
   end
 
 end
